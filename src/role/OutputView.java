@@ -68,12 +68,28 @@ public class OutputView {
         System.out.println("\n잘못된 값입니다. 다시 입력해주세요\n");
     }
 
-    public void printReceipt(Food selectedFood) {
-        System.out.println("\n====================================");
-        System.out.println("[주문서 출력] 선택하신 메뉴 정보");
-        System.out.println("메뉴명: " + selectedFood.getFoodName());
-        System.out.println("금  액: " + selectedFood.getPrice() + "원");
-        selectedFood.cook();
-        System.out.println("====================================");
+    public void askMoreOrder() {
+        System.out.print("\n추가 주문을 하시겠습니까? (1. 더하기 / 2. 종료 및 요리요청): ");
+    }
+
+    public void printReceipt(List<Food> orderCart) {
+        System.out.println("\n==============================");
+        System.out.println("       최 종 주 문 영 수 증     ");
+        System.out.println("==============================");
+        int totalSum = 0;
+
+        for (Food food : orderCart) {
+            System.out.printf("- %-15s : %d원\n", food.getFoodName(), food.getPrice());
+
+            food.cook();
+            totalSum += food.getPrice(); //총 가격
+        }
+        System.out.println("------------------------------");
+        System.out.printf("총 결제 금액          : %d원\n", totalSum);
+        System.out.println("==============================");
+    }
+
+    public void startCookingAlert() {
+        System.out.println("\n [시스템] 주방에 요리 주문을 동시 비동기 전달합니다. 잠시만 기다려주세요...\n");
     }
 }

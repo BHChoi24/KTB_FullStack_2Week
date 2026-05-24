@@ -8,7 +8,7 @@ public class OilPasta extends Pasta {
         super("알리오 올리오", 7000);
     }
     public OilPasta(int noodleChoice, int noodleDonenessChoice) {
-        super("알리오 올리오", 7000, noodleChoice, noodleDonenessChoice);
+        super("알리오 올리오", 7000, 4000, noodleChoice, noodleDonenessChoice);
     }
     @Override
     public Food createOrder(int option1, int option2) {

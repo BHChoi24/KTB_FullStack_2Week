@@ -12,13 +12,13 @@ public abstract class Steak extends Food {
 
     //메뉴판용
     public Steak(String foodName, int price) {
-        super(foodName, price);
+        super(foodName, price, 0);
         this.steakStyle = "선택 안함";
         this.steakDoneness = "선택 안함";
     }
 
-    public Steak(String foodName, int price, int styleChoice, int donenessChoice) {
-        super(foodName, price);
+    public Steak(String foodName, int price, int cookTime, int styleChoice, int donenessChoice) {
+        super(foodName, price, 0);
 
         if (styleChoice >= 1 && styleChoice <= STEAK_STYLES.length) {
             this.steakStyle = STEAK_STYLES[styleChoice - 1];

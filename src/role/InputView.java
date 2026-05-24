@@ -32,4 +32,15 @@ public class InputView {
     public int readOptionNumber() {
         return readNextInt();
     }
+
+    public int readOrderStepNumber() {
+        try {
+            int num = sc.nextInt();
+            sc.nextLine();
+            return num;
+        } catch (Exception e) {
+            sc.nextLine();
+            return -1;
+        }
+    }
 }
