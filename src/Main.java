@@ -117,7 +117,7 @@ public class Main {
         orderCart.add(selectedFood); // 생성 완료된 실체 주문서 주소를 장바구니 리스트에 적재
       }
 
-      // [추가 피드백 반영 영역] 연속 주문 제어 분기 검증
+      //5. anything else? 주문 묻기
       OrderStep step = OrderStep.INVALID;
       while (true) {
         outputView.askMoreOrder(); // 1.더하기 / 2.종료 출력 위임
@@ -136,27 +136,22 @@ public class Main {
       }
     }
 
-    // 🔴 [4단계] 2주차 멀티스레딩 오케스트레이션 구동 구역
+    //5. 멀티스레드
     outputView.startCookingAlert();
     List<Thread> kitchenThreads = new ArrayList<>(); // 생성될 스레드 제어 리모컨들을 보관할 전용 컬렉션
 
     for (Food orderedFood : orderCart) {
-      // 장바구니에 담긴 음식의 개수만큼 독립된 주방 요리사 스레드를 1:1 매핑 생성
+      // 장바구니에 담긴 요리 하나당 요리사 한명
       Thread chef = new Thread(new ChefThread(orderedFood));
       kitchenThreads.add(chef); // 관리 명부에 저장
-
-      chef.start(); // ❶ 비동기 기동! 명령을 내린 Main 스레드는 대기하지 않고 즉시 아래 코드로 직진함
+      chef.start(); //스레드 생성
     }
 
-    // ❷ 동기화 정렬 제어 (join)
-    // - 주방 요리사 스레드들이 각자 연산을 하느라 바쁜 와중에, 메인 스레드가 성급하게 영수증을 먼저 찍어버리면 안 됨
-    // - 모든 주방 스레드가 동작을 완료하고 소멸할 때까지, 호출한 주체인 Main 스레드를 강제로 잠시 홀딩(대기) 시킴
     for (Thread chef : kitchenThreads) {
-      chef.join(); // 요리 완성 알림이 다 끝날 때까지 메인 스레드가 차례대로 웨이팅함
+      chef.join(); // 주방 스레드 기다리기
     }
 
-    // [5단계] 출력 대행 위임 (SRP 준수)
-    // 주방 스레드들의 조리가 완벽히 완료된 시점에 취합된 장바구니를 토대로 총합 영수증 최종 출력
+    // 주방 스레드들 완료된 시점에 총합 영수증 최종 출력
     if (!orderCart.isEmpty()) {
       outputView.printReceipt(orderCart);
     }
