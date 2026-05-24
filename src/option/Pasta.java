@@ -12,13 +12,13 @@ public abstract class Pasta extends Food {
 
     //메뉴판에 보이게
     public Pasta(String foodName, int price) {
-        super(foodName, price);
+        super(foodName, price, 0);
         this.noodleType = "선택 안함";
         this.noodleDoneness = "선택 안함";
     }
     //주문용
-    public Pasta(String foodName, int price, int noodleTypeChoice, int noodleDonenessChoice) {
-        super(foodName, price);
+    public Pasta(String foodName, int price, int cookTime, int noodleTypeChoice, int noodleDonenessChoice) {
+        super(foodName, price, 0);
 
         if (noodleTypeChoice >= 1 && noodleTypeChoice <= NOODLE_TYPES.length) {
             this.noodleType = NOODLE_TYPES[noodleTypeChoice - 1];

@@ -9,7 +9,7 @@ public class BeefSteak extends Steak {
     }
     public BeefSteak(int styleChoice, int donenessChoice) {
         // 이름과 고정 가격은 기존 비프 스테이크의 정체성을 유지합니다.
-        super("비프 스테이크", 35000, styleChoice, donenessChoice);
+        super("비프 스테이크", 35000, 4500, styleChoice, donenessChoice);
     }
     @Override
     public Food createOrder(int option1, int option2) {
