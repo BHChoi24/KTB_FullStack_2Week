@@ -18,10 +18,10 @@ public class ChefThread implements Runnable {
             int cookTimeMs = food.getCookTime();
             //슬립을 조리중으로 표현
             Thread.sleep(cookTimeMs);
-            //1초->1분으로 표기하기 위해
-            double cookTimeSec = cookTimeMs / 100.0;
+            //요리니까 1초->1분으로 표기
+            double cookTimeMins = cookTimeMs / 1000.0;
 
-            System.out.printf("[주방 안내] %s 요리가 완성되었습니다! (조리시간: %.1f초)\n", food.getFoodName(), cookTimeSec);
+            System.out.printf("[주방 안내] %s 요리가 완성되었습니다! (조리시간: %.1f분)\n", food.getFoodName(), cookTimeMins);
 
         } catch (InterruptedException e) {
             System.out.println("[주방 에러] 조리 중단 오류 발생");

@@ -18,7 +18,7 @@ public abstract class Pasta extends Food {
     }
     //주문용
     public Pasta(String foodName, int price, int cookTime, int noodleTypeChoice, int noodleDonenessChoice) {
-        super(foodName, price, 0);
+        super(foodName, price, cookTime);
 
         if (noodleTypeChoice >= 1 && noodleTypeChoice <= NOODLE_TYPES.length) {
             this.noodleType = NOODLE_TYPES[noodleTypeChoice - 1];

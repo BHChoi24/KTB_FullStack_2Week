@@ -17,7 +17,7 @@ public class OutputView {
     //카테고리의 메뉴
     public void menuBoard(List<Food> chosenList) {
         System.out.println("\n--- 메뉴 선택 ---");
-        // 1. 전달받은 리스트의 크기만큼 반복하며 메뉴명과 가격 출력
+        // 1. 전달받은 리스트의 크기만큼 반복하며 '메뉴명과 가격 출력'
         for (int i = 0; i < chosenList.size(); i++) {
             System.out.println((i + 1) + ". " + chosenList.get(i).getFoodName() + " (" + chosenList.get(i).getPrice() + "원)");
         }
