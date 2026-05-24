@@ -4,11 +4,11 @@ import option.Pasta;
 import restaurant.Food;
 
 public class CreamPasta extends Pasta {
-    public CreamPasta() {
-        super("크림 까르보나라", 11000);
-    }
     public CreamPasta(int noodleChoice, int noodleDonenessChoice) {
-        super("크림 까르보나라", 11000, 5000, noodleChoice, noodleDonenessChoice);
+        super("크림 까르보나라", 11000, 2000, noodleChoice, noodleDonenessChoice);
+    }
+    public CreamPasta() {
+        this(0, 0);
     }
     @Override
     public Food createOrder(int option1, int option2) {

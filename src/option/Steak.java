@@ -18,7 +18,7 @@ public abstract class Steak extends Food {
     }
 
     public Steak(String foodName, int price, int cookTime, int styleChoice, int donenessChoice) {
-        super(foodName, price, 0);
+        super(foodName, price, cookTime);
 
         if (styleChoice >= 1 && styleChoice <= STEAK_STYLES.length) {
             this.steakStyle = STEAK_STYLES[styleChoice - 1];
